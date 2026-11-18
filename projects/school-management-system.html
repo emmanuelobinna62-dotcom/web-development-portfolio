@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Management System | Case Study | Emmanuel Okafor</title>
+  <meta name="description" content="Case study of a frontend-only school management system interface for student records, fees, assignments, classes and announcements.">
+  <link rel="canonical" href="https://emmanuel-okafor.vercel.app/projects/school-management-system.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+  /* Project page additions. Sits on top of style.css and reuses its colours:
+     bg #07111f, alt #0d1b2e, line #1f3a5c, text #e8eff8, muted #a3b4c9, accent #22d3ee */
+
+  /* Keyboard focus */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #22d3ee;
+    outline-offset: 3px;
+  }
+
+  /* Keep the Contact button visible on mobile (no hamburger on this page) */
+  .nav > .btn {
+    display: inline-block;
+  }
+
+  /* ===== TITLE BLOCK ===== */
+  .case-hero {
+    padding: 56px 0 0;
+  }
+
+  .crumb {
+    display: inline-block;
+    color: #a3b4c9;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .crumb:hover {
+    color: #22d3ee;
+  }
+
+  .case-hero h1 {
+    font-size: 56px;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 18px 0;
+    max-width: 16ch;
+  }
+
+  .case-hero .lead {
+    font-size: 18px;
+    max-width: 58ch;
+    margin-bottom: 26px;
+  }
+
+  .case-hero .chips {
+    margin-bottom: 28px;
+  }
+
+  .case-hero .cta {
+    margin-bottom: 0;
+  }
+
+  /* ===== SCREENSHOTS ===== */
+  .shots-wrap {
+    padding: 56px 0 24px;
+  }
+
+  .shots {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    gap: 20px;
+  }
+
+  /* soft cyan glow behind the dashboard */
+  .shots::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: -80px;
+    right: -80px;
+    height: 75%;
+    background: radial-gradient(ellipse at 50% 0, rgba(34, 211, 238, 0.17), transparent 66%);
+    pointer-events: none;
+  }
+
+  .shots figure {
+    position: relative;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #0d1b2e;
+    border: 1px solid #1f3a5c;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  /* the dashboard leads, full width */
+  .shots figure:first-child {
+    grid-column: 1 / -1;
+    border-color: rgba(34, 211, 238, 0.45);
+    box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8);
+  }
+
+  /* caption sits on top of each image */
+  .shots figcaption {
+    order: -1;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #a3b4c9;
+    background-color: #07111f;
+    border-bottom: 1px solid #1f3a5c;
+  }
+
+  .shots img {
+    width: 100%;
+  }
+
+  /* ===== SECTIONS (heading on the left, content on the right) ===== */
+  .case-section {
+    padding: 72px 0;
+    border-top: 1px solid #1f3a5c;
+  }
+
+  .case-section.alt {
+    background-color: #0d1b2e;
+  }
+
+  .case-section .wrap {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    column-gap: 56px;
+  }
+
+  .case-section .wrap > * {
+    grid-column: 2;
+  }
+
+  .case-section .wrap > h2 {
+    grid-column: 1;
+    align-self: start;
+    position: sticky;
+    top: 96px;
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .case-section p {
+    max-width: 62ch;
+    margin-bottom: 18px;
+    color: #a3b4c9;
+  }
+
+  .case-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .case-section p a {
+    color: #22d3ee;
+  }
+
+  .case-section p a:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== FEATURES (ruled rows) ===== */
+  .frows {
+    border-top: 1px solid #1f3a5c;
+  }
+
+  .frow {
+    display: grid;
+    grid-template-columns: 13rem 1fr;
+    gap: 24px;
+    padding: 15px 0;
+    border-bottom: 1px solid #1f3a5c;
+  }
+
+  .frow h4 {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #e8eff8;
+  }
+
+  .frow p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  /* ===== TECHNICAL + CHALLENGES LISTS ===== */
+  .case-list {
+    border-top: 1px solid #1f3a5c;
+  }
+
+  .case-list li {
+    padding: 18px 0;
+    border-bottom: 1px solid #1f3a5c;
+    max-width: 68ch;
+    color: #a3b4c9;
+  }
+
+  .case-list strong {
+    display: block;
+    margin-bottom: 2px;
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #e8eff8;
+  }
+
+  .case-list + p {
+    margin-top: 24px;
+  }
+
+  /* TEMPORARY: any item with class="todo" is a placeholder you still need to fill in.
+     Remove the class (and this rule) once the real text is in. */
+  .case-list li.todo {
+    margin: 8px 0;
+    padding: 16px 18px;
+    border: 1.5px dashed #f87171;
+    border-radius: 6px;
+    background-color: rgba(248, 113, 113, 0.06);
+  }
+
+  .chips li.todo {
+    color: #f87171;
+    border: 1px dashed #f87171;
+  }
+
+  /* ===== PROJECT NAV (previous / next) ===== */
+  .case-section .wrap.case-nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* ===== TABLET ===== */
+  @media (max-width: 960px) {
+    .case-hero h1 {
+      font-size: 44px;
+    }
+  }
+
+  /* ===== PHONE ===== */
+  @media (max-width: 760px) {
+    .case-hero {
+      padding-top: 36px;
+    }
+
+    .case-hero h1 {
+      font-size: 34px;
+    }
+
+    .shots-wrap {
+      padding-top: 40px;
+    }
+
+    .shots {
+      grid-template-columns: 1fr;
+    }
+
+    .case-section {
+      padding: 52px 0;
+    }
+
+    .case-section .wrap {
+      display: block;
+    }
+
+    .case-section .wrap > h2 {
+      position: static;
+      margin-bottom: 20px;
+    }
+
+    .frow {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="../index.html" class="logo">&lt;/<span>Em</span>Dev&gt;</a>
+      <a href="../index.html#contact" class="btn btn-primary">Contact me</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- 1. TITLE + SCREENSHOTS -->
+<section class="case-hero" style="padding-bottom:0">
+  <div class="wrap">
+    <a href="../index.html#projects" class="crumb">&larr; Back to projects</a>
+    <div><span class="badge">Personal project</span> <span class="badge">Frontend only</span></div>
+    <h1>School management system</h1>
+    <p class="lead">A frontend interface for managing school records: students, fees, assignments, classes and announcements.</p>
+    <ul class="chips">
+      <!-- EDIT: replace with your real stack, for example React, Tailwind CSS -->
+      <li class="todo">Tailwind CSS</li><li>React</li>
+    </ul>
+    <div class="cta">
+      <a href="https://school-management-system-two-henna.vercel.app/" class="btn btn-primary" target="_blank" >View live demo</a>
+      <a href="https://github.com/emmanuelobinna62-dotcom/school-management-system" class="btn btn-ghost" target="_blank" >View on GitHub</a>
+    </div>
+
+    <div class="shots-wrap">
+      <div class="shots" role="group" aria-label="Screenshots">
+        <figure><img src="../images/dashboard.png" alt="School management system dashboard" loading="lazy"><figcaption>Dashboard</figcaption></figure>
+        <figure><img src="../images/student-edit.png" alt="School management system student records" loading="lazy"><figcaption>Student records: add, edit and delete</figcaption></figure>
+        <figure><img src="../images/teacher-detail.png" alt="School management system teachers records" loading="lazy"><figcaption>Teachers records : add, edit,and delete</figcaption></figure>
+        <figure><img src="../images/mobile-view.png" alt="School management system on a phone" loading="lazy"><figcaption>Mobile view</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. OVERVIEW -->
+<section class="case-section">
+  <div class="wrap">
+    <h2>Overview</h2>
+    <p>This is a personal project that focuses on the interface of a school management system. It covers the screens a school administrator would use day to day to keep records of the school community, designed to be clear and easy to use on desktop and mobile.</p>
+    <p>It is a frontend-only project: it has no backend or database. It is a portfolio project, not a delivered client engagement.</p>
+  </div>
+</section>
+
+<!-- 3. PROBLEM -->
+<section class="case-section alt">
+  <div class="wrap">
+    <h2>The business need</h2>
+    <p>Schools handle a lot of information, such as students, classes and staff. When it lives on paper or in scattered files, it is slow to find and easy to get wrong. This project explores how a clean interface can make that information easier to view and manage.</p>
+  </div>
+</section>
+
+<!-- 4. SOLUTION -->
+<section class="case-section">
+  <div class="wrap">
+    <h2>The solution</h2>
+    <p>A set of dashboard screens, forms and navigation designed around the tasks an administrator performs. I concentrated on layout, consistency and usability rather than on server-side logic.</p>
+    <p>From one place, an administrator can add, edit and delete student records, check which students have paid their fees, keep track of assignments and classes, and post announcements.</p>
+  </div>
+</section>
+
+<!-- 5. FEATURES -->
+<section class="case-section alt">
+  <div class="wrap">
+    <h2>Key features</h2>
+    <div class="frows">
+      <div class="frow"><h4>Student records</h4><p>Add, edit and delete student records.</p></div>
+      <div class="frow"><h4>Fees tracking</h4><p>Check which students have paid their fees.</p></div>
+      <div class="frow"><h4>Assignments</h4><p>Keep track of assignments for students.</p></div>
+      <div class="frow"><h4>Classes</h4><p>View and organize school classes.</p></div>
+      <div class="frow"><h4>Announcements</h4><p>Post notices for the school community.</p></div>
+      <div class="frow"><h4>Responsive layout</h4><p>Works on desktop, tablet and phone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. TECHNICAL IMPLEMENTATION -->
+<section class="case-section">
+  <div class="wrap">
+    <h2>Technical implementation</h2>
+    <ul class="case-list">
+      <li class="todo"><strong>Front end</strong> React and Tailwind CSS.</li>
+      <li><strong>Scope</strong>Frontend only. There is no backend, database or authentication in this project.</li>
+      <!-- <li class="todo"><strong>Data</strong>[EDIT: say where the data comes from, for example sample data in the code.]</li> -->
+      <li><strong>Layout</strong>Responsive across desktop, tablet and mobile.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. MY ROLE -->
+<section class="case-section alt">
+  <div class="wrap">
+    <h2>My role</h2>
+    <p>I designed and built the interface on my own, from layout and components to responsive behaviour.</p>
+  </div>
+</section>
+
+<!-- 8. CHALLENGES -->
+<section class="case-section">
+  <div class="wrap">
+    <h2>Challenges and decisions</h2>
+    <ul class="case-list">
+      <li><strong>Frontend-only scope</strong>I limited this project to the interface, so the focus stays on layout, consistency and usability.</li>
+      <!-- <li class="todo"><strong>[ADD ONE REAL CHALLENGE]</strong>[Describe a problem you hit and how you solved it.]</li> -->
+    </ul>
+    <p>For a project with a real database, login and booking flow, see the <a href="strivo.html">Strivo case study</a>.</p>
+  </div>
+</section>
+
+<!-- 9. NEXT PROJECTS -->
+<section class="case-section alt">
+  <div class="wrap case-nav">
+    <a href="strivo.html" class="btn btn-ghost">&larr; Strivo gym management platform</a>
+    <a href="real-estate-website.html" class="btn btn-ghost">Real estate website &rarr;</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="../index.html" class="logo">&lt;/<span>Em</span>Dev&gt;</a>
+    <p>&copy; <span id="year">2026</span> Emmanuel Okafor</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

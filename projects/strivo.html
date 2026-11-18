@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strivo Gym Management Platform | Case Study | Emmanuel Okafor</title>
+  <meta name="description" content="Case study of Strivo, a gym management web app built with React and Supabase: admin dashboard, member bookings, trainers, classes and membership requests.">
+  <link rel="canonical" href="https://emmanuel-okafor.vercel.app/projects/strivo.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+  /* Project page additions. Sits on top of style.css and reuses its colours:
+     bg #07111f, alt #0d1b2e, line #1f3a5c, text #e8eff8, muted #a3b4c9, accent #22d3ee */
+
+  /* Keyboard focus */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #22d3ee;
+    outline-offset: 3px;
+  }
+
+  /* Keep the Contact button visible on mobile (no hamburger on this page) */
+  .nav > .btn {
+    display: inline-block;
+  }
+
+  /* ===== TITLE BLOCK ===== */
+  .case-hero {
+    padding: 56px 0 0;
+  }
+
+  .crumb {
+    display: inline-block;
+    color: #a3b4c9;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .crumb:hover {
+    color: #22d3ee;
+  }
+
+  .case-hero h1 {
+    font-size: 56px;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 18px 0;
+    max-width: 16ch;
+  }
+
+  .case-hero .lead {
+    font-size: 18px;
+    max-width: 58ch;
+    margin-bottom: 26px;
+  }
+
+  .case-hero .chips {
+    margin-bottom: 28px;
+  }
+
+  .case-hero .cta {
+    margin-bottom: 0;
+  }
+
+  /* ===== SCREENSHOTS ===== */
+  .shots-wrap {
+    padding: 56px 0 24px;
+  }
+
+  .shots {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  /* soft cyan glow behind the dashboard */
+  .shots::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: -80px;
+    right: -80px;
+    height: 75%;
+    background: radial-gradient(ellipse at 50% 0, rgba(34, 211, 238, 0.17), transparent 66%);
+    pointer-events: none;
+  }
+
+  .shots figure {
+    position: relative;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #0d1b2e;
+    border: 1px solid #1f3a5c;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  /* the dashboard leads, full width */
+  .shots figure:first-child {
+    grid-column: 1 / -1;
+    border-color: rgba(34, 211, 238, 0.45);
+    box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8);
+  }
+
+  /* caption sits on top of each image */
+  .shots figcaption {
+    order: -1;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #a3b4c9;
+    background-color: #07111f;
+    border-bottom: 1px solid #1f3a5c;
+  }
+
+  .shots img {
+    width: 100%;
+  }
+
+  /* ===== SECTIONS (heading on the left, content on the right) ===== */
+  .case-section {
+    padding: 72px 0;
+    border-top: 1px solid #1f3a5c;
+  }
+
+  .case-section.alt {
+    background-color: #0d1b2e;
+  }
+
+  .case-section .wrap {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    column-gap: 56px;
+  }
+
+  .case-section .wrap > * {
+    grid-column: 2;
+  }
+
+  .case-section .wrap > h2 {
+    grid-column: 1;
+    align-self: start;
+    position: sticky;
+    top: 96px;
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .case-section p {
+    max-width: 62ch;
+    margin-bottom: 18px;
+    color: #a3b4c9;
+  }
+
+  .case-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ===== FEATURES ===== */
+  /* the circle shows the group: filled = admin, ring = member, half = shared */
+  .fgroups {
+    display: grid;
+    gap: 40px;
+  }
+
+  .fgroup h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .fgroup h3::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    flex: none;
+    border: 2px solid #22d3ee;
+    border-radius: 50%;
+  }
+
+  .fgroup.admin h3::before {
+    background-color: #22d3ee;
+  }
+
+  .fgroup.shared h3::before {
+    background: linear-gradient(90deg, #22d3ee 50%, transparent 50%);
+  }
+
+  .frow {
+    display: grid;
+    grid-template-columns: 13rem 1fr;
+    gap: 24px;
+    padding: 15px 0;
+    border-top: 1px solid #1f3a5c;
+  }
+
+  .frow:last-child {
+    border-bottom: 1px solid #1f3a5c;
+  }
+
+  .frow h4 {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #e8eff8;
+  }
+
+  .frow p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  /* ===== TECHNICAL + CHALLENGES LISTS ===== */
+  .case-list {
+    border-top: 1px solid #1f3a5c;
+  }
+
+  .case-list li {
+    padding: 18px 0;
+    border-bottom: 1px solid #1f3a5c;
+    max-width: 68ch;
+    color: #a3b4c9;
+  }
+
+  .case-list strong {
+    display: block;
+    margin-bottom: 2px;
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #e8eff8;
+  }
+
+  /* TEMPORARY: flags the placeholder so it isn't published by accident.
+     Delete this rule once you've written your real challenge. */
+  .case-list li:last-child {
+    margin-top: 16px;
+    padding: 16px 18px;
+    border: 1.5px dashed #f87171;
+    border-radius: 6px;
+    background-color: rgba(248, 113, 113, 0.06);
+  }
+
+  /* ===== PROJECT NAV (previous / next) ===== */
+  .case-section .wrap.case-nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* ===== TABLET ===== */
+  @media (max-width: 960px) {
+    .case-hero h1 {
+      font-size: 44px;
+    }
+  }
+
+  /* ===== PHONE ===== */
+  @media (max-width: 760px) {
+    .case-hero {
+      padding-top: 36px;
+    }
+
+    .case-hero h1 {
+      font-size: 34px;
+    }
+
+    .shots-wrap {
+      padding-top: 40px;
+    }
+
+    .shots {
+      grid-template-columns: 1fr;
+    }
+
+    .case-section {
+      padding: 52px 0;
+    }
+
+    .case-section .wrap {
+      display: block;
+    }
+
+    .case-section .wrap > h2 {
+      position: static;
+      margin-bottom: 20px;
+    }
+
+    .frow {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="../index.html" class="logo">&lt;/<span>Em</span>Dev&gt;</a>
+      <a href="../index.html#contact" class="btn btn-primary">Contact me</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- 1. TITLE + SCREENSHOTS -->
+<section class="case-hero" style="padding-bottom:0">
+  <div class="wrap">
+    <a href="../index.html#projects" class="crumb">&larr; Back to projects</a>
+    <div></div>
+    <h1>Strivo gym management platform</h1>
+    <p class="lead">A gym management web app with separate admin and member dashboards, class booking and a membership request workflow, built on React and Supabase.</p>
+    <ul class="chips">
+      <li>React</li><li>JavaScript</li><li>Tailwind CSS</li><li>Supabase</li><li>React Router</li><li>Vite</li><li>Vercel</li>
+    </ul>
+    <div class="cta">
+      <a href="https://strivo-gym-management.vercel.app/" class="btn btn-primary" target="_blank">View live demo</a>
+      <a href="https://github.com/emmanuelobinna62-dotcom/strivo-gym-management" class="btn btn-ghost" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="shots-wrap">
+      <div class="shots" role="group" aria-label="Screenshots">
+        <figure><img src="../images/strivo-gym-dashboard.png" alt="Strivo admin dashboard" loading="lazy"><figcaption>Admin dashboard</figcaption></figure>
+        <figure><img src="../images/trainer.png" alt="Strivo trainer management page" loading="lazy"><figcaption>Trainer management with profile image upload</figcaption></figure>
+        <figure><img src="../images/booking-section.png" alt="Strivo class session booking page" loading="lazy"><figcaption>Class session browsing and booking</figcaption></figure>
+        <figure><img src="../images/membership.png" alt="Strivo membership requests page" loading="lazy"><figcaption>Membership requests and admin approval</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. OVERVIEW -->
+<section class="case-section">
+  <div class="wrap">
+    <h2>Overview</h2>
+    <p>Strivo is a  project I built to show how a small gym could run its daily operations from one web app. Admins manage trainers, classes and memberships. Members sign in, browse class sessions and book or cancel their place.</p>
+    <p>It is a portfolio project, not a delivered client engagement.</p>
+  </div>
+</section>
+
+<!-- 3. PROBLEM -->
+<section class="case-section alt">
+  <div class="wrap">
+    <h2>The business need</h2>
+    <p>Gyms often track classes, trainers, bookings and membership requests in separate places, such as spreadsheets and chat messages. That makes it hard to see who is booked into which class and which membership requests are waiting for a decision.</p>
+  </div>
+</section>
+
+<!-- 4. SOLUTION -->
+<section class="case-section">
+  <div class="wrap">
+    <h2>The solution</h2>
+    <p>One application with two sides. The admin side is where staff manage the gym. The member side is where members book classes and request memberships. Sign-in and role-based access decide which side each person sees.</p>
+    <p>Membership payments are handled manually outside the app. Strivo records the request and the admin approval.</p>
+  </div>
+</section>
+
+<!-- 5. FEATURES -->
+<section class="case-section alt">
+  <div class="wrap">
+    <h2>Key features</h2>
+    <div class="fgroups">
+      <div class="fgroup admin">
+        <h3>Admin side</h3>
+        <div class="frow"><h4>Admin dashboard</h4><p>One place for staff to manage the gym.</p></div>
+        <div class="frow"><h4>Trainer management</h4><p>Add, edit and delete trainers, with profile images.</p></div>
+        <div class="frow"><h4>Class management</h4><p>Create classes and assign a lead trainer to each.</p></div>
+      </div>
+      <div class="fgroup member">
+        <h3>Member side</h3>
+        <div class="frow"><h4>Member dashboard</h4><p>Members see their bookings and memberships.</p></div>
+        <div class="frow"><h4>Booking and cancellation</h4><p>Browse class sessions, book a place and cancel it.</p></div>
+      </div>
+      <div class="fgroup shared">
+        <h3>Shared by both</h3>
+        <div class="frow"><h4>Authentication and roles</h4><p>Sign-in with role-based access for admins and members.</p></div>
+        <div class="frow"><h4>Membership plans</h4><p>Plans members can choose from.</p></div>
+        <div class="frow"><h4>Membership requests</h4><p>Members request a plan and admins approve it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. TECHNICAL IMPLEMENTATION -->
+<section class="case-section">
+  <div class="wrap">
+    <h2>Technical implementation</h2>
+    <ul class="case-list">
+      <li><strong>Front end</strong>React with Vite, React Router for the admin and member routes, and Tailwind CSS for styling.</li>
+      <li><strong>Back end</strong>Supabase provides authentication and the Postgres database. There is no custom server.</li>
+      <li><strong>Data model</strong>Profiles link to Supabase users. Bookings link a member to a class session, and classes link to trainers.</li>
+      <li><strong>Data integrity</strong>Foreign keys with cascading deletes, so removing a user or a class session also removes the bookings tied to it.</li>
+      <li><strong>Deployment</strong>Hosted on Vercel.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. MY ROLE -->
+<section class="case-section alt">
+  <div class="wrap">
+    <h2>My role</h2>
+    <p>I built Strivo on my own: the interface, routing, Supabase integration, the database relationships and the deployment.</p>
+  </div>
+</section>
+
+<!-- 8. CHALLENGES -->
+<section class="case-section">
+  <div class="wrap">
+    <h2>Challenges and decisions</h2>
+    <ul class="case-list">
+      <li><strong>Keeping data consistent</strong>I used foreign keys with cascading deletes so bookings never point to a user or session that no longer exists.</li>
+      <li><strong>Payments</strong>I kept payments outside the app and built a request and approval workflow instead.</li>
+      <!-- <li><strong>[ADD ONE REAL CHALLENGE]</strong>[Describe a problem you hit and how you solved it, for example a permissions issue in Supabase.]</li> -->
+    </ul>
+  </div>
+</section>
+
+<!-- 9. NEXT PROJECTS -->
+<section class="case-section alt">
+  <div class="wrap case-nav">
+    <a href="school-management-system.html" class="btn btn-ghost">&larr; School management system</a>
+    <a href="real-estate-website.html" class="btn btn-ghost">Real estate website &rarr;</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="../index.html" class="logo">&lt;/<span>Em</span>Dev&gt;</a>
+    <p>&copy; <span id="year">2026</span> Emmanuel Okafor</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -8,7 +8,7 @@
   <!-- SEO -->
   <title>Emmanuel Okafor | Full-Stack Web Developer in Nigeria</title>
   <meta name="description"
-    content="Full-stack web developer in Nigeria building fast, modern websites and landing pages with HTML, Tailwind CSS and JavaScript. See my projects and get in touch.">
+    content="Web developer in Nigeria building custom web applications and fast-loading, high-converting business websites. See my projects and get in touch.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://web-development-portfolio-two.vercel.app/">
 
@@ -29,13 +29,16 @@
 
   <!-- Google Search Console verification: paste your tag here after step 2 -->
   <meta name="google-site-verification" content="qu1Y766NMzzAagTxQcvy8gdowQzGQ9WpZSdq0VI6004" />
-  
+
 
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
+  <!-- <link
     href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"> -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
@@ -43,7 +46,7 @@
 </head>
 
 <body>
-  <header>
+  <!-- <header>
     <div class="container">
       <nav>
         <a href="#">
@@ -60,508 +63,313 @@
         <i class="fa-solid fa-bars" id="menuBtn"></i>
       </nav>
     </div>
+  </header> -->
+
+  <!-- New header  -->
+
+  <header>
+    <div class="wrap nav">
+
+      
+        <a href="#home" class="logo">&lt;/<span>Em</span>Dev&gt;</a>
+        <ul class="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Contact me</a>
+        <i class="fa-solid fa-bars" id="menuBtn"></i>
+      
+    </div>
   </header>
 
-  <main>
-    <section id="home" class="section-1">
-      <div class="container">
-        <div class="left-section">
-          <span>I'M GLAD YOU'RE HERE.</span>
-          <h1>
-            Hi👋 I am Emmanuel.
-            I Build <span>Custom Modern Web applications</span>
-          </h1>
-          </h1>
-          <p>
-            I’m a Full-Stack Developer based in Nigeria, passionate about building modern web applications and solving
-            real-world problems through clean code and smart design.
+
+  <main id="home">
+
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="status">Available for remote projects worldwide</p>
+          <h1>I build websites and web applications that solve real business problems.</h1>
+          <p class="lead">I design and develop modern business websites and custom web applications that improve
+            customer experiences, streamline operations, and simplify business processes.</p>
+          <ul class="chips" aria-label="Main technologies">
+            <li>React</li>
+            <li>JavaScript</li>
+            <li>Tailwind CSS</li>
+            <li>Supabase</li>
+          </ul>
+          <div class="cta">
+            <a href="#projects" class="btn btn-primary">View projects</a>
+            <a href="#contact" class="btn btn-ghost">Start a project</a>
+          </div>
+          <div class="social">
+            <a href="https://github.com/emmanuelobinna62-dotcom" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/emmanuel-okafor-8a26b625b/" target="_blank">LinkedIn</a>
+            
+          </div>
+        </div>
+        <div class="portrait">
+          <img src="images/profile-image.png" width="760" height="950" alt="Portrait of Emmanuel Okafor">
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="alt">
+      <div class="wrap about-grid">
+        <img src="images/profile-image.png" width="600" height="600" loading="lazy" alt="Emmanuel Okafor in a suit">
+        <div>
+          <h2>Web developer based in Nigeria</h2>
+          <p>I build custom web applications for businesses: admin dashboards, membership systems, booking and
+            scheduling tools, and business websites connected to a database.</p>
+          <p>My focus is software that works the way a business actually operates. I handle the interface, the
+            authentication and the data layer, so owners and their customers get something clear, fast and reliable.</p>
+          <a href="Emmanuel_CV.pdf" class="btn btn-primary" download >Download my CV</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>What I build</h2>
+          <p class="lead">Custom software and websites for businesses that need more than a template.</p>
+        </div>
+        <div class="grid-4">
+          <article class="card"><span class="tag">react</span>
+            <h3>Custom web applications</h3>
+            <p>Single-page apps built with React, with clean structure and responsive layouts.</p>
+          </article>
+          <article class="card"><span class="tag">dashboards</span>
+            <h3>Admin and member dashboards</h3>
+            <p>Role-based access so owners manage the business and members manage their own accounts.</p>
+          </article>
+          <article class="card"><span class="tag">booking</span>
+            <h3>Booking and membership systems</h3>
+            <p>Class or appointment scheduling, bookings, cancellations and approval workflows.</p>
+          </article>
+          <article class="card"><span class="tag">websites</span>
+            <h3>Business websites</h3>
+            <p>Fast, responsive sites that present your services clearly and make contact easy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume" class="alt">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Skills and education</h2>
+        </div>
+        <div class="resume-grid">
+          <div>
+            <h3>Skills</h3>
+            <ul class="skills">
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>JavaScript</li>
+              <li>React</li>
+              <li>Tailwind CSS</li>
+              <li>Supabase</li>
+              <li>Git and GitHub</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Education</h3>
+            <ul class="edu">
+              <li><strong>Full-stack development programme</strong><span>Sabi Programmers, Akure</span></li>
+              <li><strong>Front-end development</strong><span>Tech Tutors Tech Academy, Lagos</span></li>
+              <li><strong>B.A. Philosophy</strong><span>University of Calabar</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Selected projects</h2>
+          <p class="lead">Personal projects built to demonstrate how I design, build and deploy real business software.
           </p>
-          <h4>FIND ME ON</h4>
-          <div class="socials">
-            <div class="social-handles"> <a href="https://www.facebook.com/EmDev?_rdc=4&_rdr#"><i
-                  class="fa-brands fa-facebook-f"></i></a> </div>
-            <div class="social-handles"> <a href="https://www.linkedin.com/in/emmanuel-okafor-8a26b625b/"><i
-                  class="fa-brands fa-linkedin-in"></i></a> </div>
-            <div class="social-handles"> <a href="https://github.com/emmanuelobinna62-dotcom"><i
-                  class="fa-brands fa-github"></i></a> </div>
-          </div>
-          <a href="#contact" class="contact-btn">Contact Us</a>
-
-        </div>
-        <div class="right-section">
-          <div></div>
-          <img src="images/profile-image-web-developer-full-stack-developer.png" alt="Hero-image">
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section-2">
-      <div class="container">
-        <div class="left-section">
-          <!-- <div class="img-container"> -->
-          <img src="images/profile-image-web-developer-full-stack-developer.png" alt="hero-image">
-          <!-- </div> -->
-        </div>
-        <div class="right-section">
-          <div class="right-content">
-            <div class="about">
-              <div class="icon">
-                <i class="fa-solid fa-bullseye"></i>
-                <span>About Me</span>
-              </div>
-              <h2>
-                I Build Custom Modern Web applications
-              </h2>
-            </div>
-
-            <p>
-              I build custom modern web applications that are fast, responsive, and designed to deliver real results for
-              businesses. My focus is creating clean user experiences with strong performance across all devices.
-            </p>
-            <p>
-              From landing pages to full websites, I combine modern design with solid backend functionality to ensure
-              everything works smoothly. I write clean code, build scalable systems, and turn ideas into real working
-              products.
-            </p>
-            <a href="/Emmanuel_Okafor_CV_Updated.pdf" target="_blank">Download My CV</a>
-
-
-          </div>
         </div>
 
-      </div>
-
-    </section>
-
-    <section id="services" class="section-3">
-      <div class="container">
-        <div class="text-section">
-          <div class="icon-container">
-            <i class="fa-solid fa-bullseye"></i>
-            <span>SERVICES</span>
+        <article class="project featured">
+          <div class="shot"><img src="images/strivo-gym-dashboard.png" width="1200" height="750"
+              alt="Strivo gym management dashboard"></div>
+          <div class="body">
+            <span class="badge">Featured project</span>
+            <h3>Strivo gym management platform</h3>
+            <p>A full gym management app with an admin dashboard and a member dashboard. Admins manage trainers,
+              classes, membership plans and membership requests. Members browse class sessions, book them and cancel
+              bookings. Authentication and role-based access run on Supabase.</p>
+            <ul class="stack">
+              <li>React</li>
+              <li>JavaScript</li>
+              <li>Tailwind CSS</li>
+              <li>Supabase</li>
+              <li>React Router</li>
+              <li>Vite</li>
+              <li>Vercel</li>
+            </ul>
+            <p class="note">Membership payments are handled outside the app.</p>
+            <div class="links"><a href="https://strivo-gym-management.vercel.app/">View live demo</a><a href="projects/strivo.html">View case study</a></div>
           </div>
-          <h2>My Services</h2>
-        </div>
-        <div class="boxes">
-          <div>
-            <div class="icon-container">
-              <i class="fa-solid fa-palette"></i>
-            </div>
-            <h3>Web Design</h3>
-            <p>
-              Creating clean modern layouts that improve user experience and boost conversions.
-            </p>
-          </div>
-          <div>
-            <div class="icon-container">
-              <i class="fa-solid fa-code"></i>
-            </div>
-            <h3>Web Development</h3>
-            <p>
-              Building modern responsive web solutions with clean code and strong performance for all devices.
-            </p>
-          </div>
-          <div>
-            <div class="icon-container">
-              <i class="fa-solid fa-layer-group"></i>
-            </div>
-            <h3>Landing Page</h3>
-            <p>
-              High-converting landing pages built to capture leads, promote services, and drive customer actions.
-            </p>
-          </div>
-          <div>
-            <div class="icon-container">
-              <i class="fa-solid fa-magnifying-glass-chart"></i>
-            </div>
-            <h3>SEO Optimization</h3>
-            <p>
-              Boost your visibility on Google with proper SEO structure, fast loading pages, and clean optimized
-              content.
-            </p>
-          </div>
+        </article>
 
-
-        </div>
-      </div>
-
-    </section>
-
-    <section id="resume" class="section-4">
-      <div class="text">
-        <div class="icon">
-          <i class="fa-solid fa-bullseye"></i>
-          <span>RESUME</span>
-        </div>
-        <h2>Skills and Education</h2>
-      </div>
-      <div class="container">
-
-        <div class="left-section">
-          <h3>Skills</h3>
-          <div class="skills">
-
-            <div class="skill-card">
-              <div class="icons">
-                <img src="images/css-3 (3).png" alt="skills">
-              </div>
-              <div>
-                <p>CSS3</p>
-              </div>
+        <div class="grid-3">
+          <article class="project">
+            <div class="shot"><img src="images/school-management-system.png" width="1200" height="750" loading="lazy"
+                alt="School management system interface"></div>
+            <div class="body">
+              <h3>School management system</h3>
+              <p>A frontend interface for managing school operations, with clear dashboards and forms.</p>
+              <ul class="stack">
+                <li>React</li>
+                <li>Tailwind CSS</li>
+                <li>JavaScript</li>
+              </ul>
+              <p class="note">Personal project.</p>
+              <div class="links"><a href="https://school-management-system-two-henna.vercel.app/">View live demo</a><a href="projects/school-management-system.html">View
+                  case study</a></div>
             </div>
-            <div class="skill-card">
-              <div class="icons">
-                <img src="images/python.svg" alt="skills">
-              </div>
-              <div>
-                <p>Python</p>
-              </div>
-            </div>
-            <div class="skill-card">
-              <div class="icons">
-                <img src="images/icons8-javascript-logo-50.png" alt="skills">
-              </div>
-              <div>
-                <p>JavaScript</p>
-              </div>
-            </div>
-            <div class="skill-card">
-              <div class="icons">
-                <img src="images/tailwindcss.svg" alt="skills">
-              </div>
-              <div>
-                <p>TailWind CSS</p>
-              </div>
-            </div>
-            <div class="skill-card">
-              <div class="icons">
-                <img src="images/html5.svg" alt="skills">
-              </div>
-              <div><span>
-                  <p>HTML5</p>
-              </div>
-            </div>
-            <div class="skill-card">
-              <div class="icons">
-                <img src="images/icons8-django-50.png" alt="skills">
-              </div>
-              <div>
-                <p>Django</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="right-section">
-          <h3>Education</h3>
-          <div class="education">
-            <div class="card card-1">
-              <div class="icons">
-                <i class="fa-solid fa-layer-group"></i>
-              </div>
-              <div>
-                <h4>Full-stack development programme</h4>
-                <p>Sabi Programmers Akure</p>
-              </div>
-            </div>
-            <div class="card card-2">
-              <div class="icons">
-                <i class="fa-solid fa-laptop-code"></i>
-              </div>
-              <div>
-                <h4>Front-end Developmennt</h4>
-                <p>Tech Tutors Tech Academy Lagos</p>
-              </div>
-            </div>
-            <div class="card card-3">
-              <div class="icons">
-                <i class="fa-solid fa-graduation-cap"></i>
-              </div>
-              <div>
-                <h4>B.A in Philosophy</h4>
-                <p>University Of Calabar</p>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <section id="portfolio" class="section-5">
-      <div class="container">
-        <div class="text">
-          <div class="icon">
-            <i class="fa-solid fa-bullseye"></i>
-            <span>PORTFOLIO</span>
-          </div>
-          <h2>Some recent Projects</h2>
-        </div>
-        <div class="project-container">
-
-          <div class="card card-1">
-            <div class="image-container">
-              <img src="images/Real-estate-website.png" alt="real-estate-template">
-            </div>
-            <div class="text-container">
-              <div class="title">
-                <h5>Real estate Website</h5>
-                <a href="https://realestate-ten-kappa.vercel.app/" target="_blank">View Site</a>
-              </div>
-              <p>
-                A modern real estate website designed to showcase properties clearly, improve user experience, and make
-                listings easy to browse and manage.
+          </article>
+          <!-- <article class="project">
+            <div class="shot"><img src="images/Real-estate-website.png" width="1200" height="750" loading="lazy"
+                alt="Real estate website homepage"></div>
+            <div class="body">
+              <h3>Real estate website</h3>
+              <p>A property listing website that presents available homes clearly and is easy to browse on any device.
               </p>
-              <div class="features">
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Property Listing</p>
-                </div>
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Mobile-friendly</p>
-                </div>
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Modern UI</p>
-                </div>
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Responsive design</p>
-                </div>
-              </div>
-              <div class="skills">
-                <span>HTML5</span>
-                <span>CSS3</span>
-                <span>JavaScript</span>
-              </div>
+              <ul class="stack">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+              </ul>
+              <p class="note">Personal project.</p>
+              <div class="links"><a href="#">View live demo</a><a href="projects/real-estate-website.html">View case
+                  study</a></div>
             </div>
-          </div>
-
-          <div class="card card-2">
-            <div class="image-container">
-              <img src="images/restaurant-website-html-mobile-responsive-web-developer.png" alt="restaurant-template">
+          </article> -->
+          <article class="project">
+            <div class="shot"><img src="images/restaurant-website-html-mobile-responsive-web-developer.png" width="1200" height="750" loading="lazy"
+                alt="Restaurant website homepage"></div>
+            <div class="body">
+              <h3>Restaurant website</h3>
+              <p>A restaurant website that shows the menu and highlights the dining experience across devices.</p>
+              <ul class="stack">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+              </ul>
+              <!-- <p class="note">Personal project.</p> -->
+              <div class="links"><a href="https://ember-restaurant-seven.vercel.app/">View live demo</a><a href="projects/restaurant-website.html">View case
+                  study</a></div>
             </div>
-            <div class="text-container">
-              <div class="title">
-                <h5>Restaurant Website</h5>
-                <a href="https://ember-restaurant-seven.vercel.app/" target="_blank">View Site</a>
-              </div>
-              <p>
-                A restaurant website that displays menus clearly and highlights available services for
-                It is designed to make browsing smooth and enjoyable across all devices.
-
-              </p>
-              <div class="features">
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Mobile-first design</p>
-                </div>
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Clean and modern UI</p>
-                </div>
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Fully responsive</p>
-                </div>
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Structured page</p>
-                </div>
-              </div>
-              <div class="skills">
-                <span>HTML5</span>
-                <span>Tailwind CSS</span>
-                <span>JavaScript</span>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="card card-3">
-            <div class="image-container">
-              <img src="images/plumbing-website-web-developer.png" alt="plumbing-template">
-            </div>
-            <div class="text-container">
-              <div class="title">
-                <h5>Plumbing Website</h5>
-                <a href="https://plumbing-alpha.vercel.app/" target="_blank">View Site</a>
-              </div>
-              <p>
-                A responsive plumbing website built with HTML, Tailwind CSS, and JavaScript that allows users to easily
-                book services, view offerings, and connect with professionals.
-              </p>
-              <div class="features">
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Mobile-friendly</p>
-                </div>
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Good booking system</p>
-                </div>
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Service information</p>
-                </div>
-                <div>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <p>Fast and reliable layout</p>
-                </div>
-              </div>
-              <div class="skills">
-                <span>HTML5</span>
-                <span>Tailwind CSS</span>
-                <span>JavaScript</span>
-              </div>
-            </div>
-          </div>
-
+          </article>
         </div>
       </div>
-
     </section>
 
-    <section id="contact">
-
-      <div class="contact-header">
-        <!-- <span class="contact-tag">Contact</span> -->
-
-        <div class="contact-tag">
-          <i class="fa-solid fa-bullseye"></i>
-          <span>CONTACT</span>
+    <section id="contact" class="alt">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Let's work together</h2>
+          <p class="lead">Tell me about your project and I will reply with questions or a proposed next step.</p>
         </div>
+        <div class="contact-grid">
+          <ul class="info">
+            <li><strong>Email</strong><a href="mailto:emmanuelobinna62@gmail.com">emmanuelobinna62@gmail.com</a></li>
+            <li><strong>Phone</strong><a href="tel:+2348120692042">+234 812 069 2042</a></li>
+            <li><strong>Location</strong><span>Lagos, Nigeria. Available for remote work worldwide.</span></li>
+          </ul>
+          <!-- Replace YOUR_FORM_ID with your Formspree form ID, or point action to your own form handler -->
+          <!-- <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <label>Name<input type="text" name="name" placeholder="Your name" required></label>
+            <label>Email<input type="email" name="email" placeholder="you@company.com" required></label>
+            <label>Message<textarea name="message" placeholder="What do you need built?" required></textarea></label>
+            <button type="submit" class="btn btn-primary">Send message</button>
+          </form> -->
 
-        <h2 class="contact-title">
-          Let's Work Together
-        </h2>
+<form id="contact-form">
+    <label>
+      Name
+      <input type="text" name="name" placeholder="Your name" required>
+    </label>
 
-        <!-- <p class="contact-desc">
-          Have a project in mind? I'd love to hear about it. Send me a message and let's create something amazing.
-        </p> -->
-      </div>
+    <label>
+      Email
+      <input type="email" name="email" placeholder="you@company.com" required>
+    </label>
 
-      <div class="contact-container">
-        <!-- LEFT -->
-        <div class="contact-left">
-          <div class="contact-box">
-            <div class="icon-box">
-              <i class="fa-regular fa-envelope"></i>
-            </div>
+    <label>
+      Message
+      <textarea name="message" placeholder="What do you need built?" required></textarea>
+    </label>
 
-            <div>
-              <h3>Email</h3>
-              <a href="mailto:emmanuelobinna62@gmail.com">emmanuelobinna62@gmail.com</a>
-            </div>
-          </div>
-          <div class="contact-box">
-            <div class="icon-box">
-              <i class="fa-regular fa-envelope"></i>
-            </div>
+    <button type="submit" class="btn btn-primary">
+      Send message
+    </button>
 
-            <div>
-              <h3>Phone</h3>
-              <a href="https://wa.me/2348120692042" target="_blank">+2348120692042</a>
-            </div>
-          </div>
+    <p id="form-status"></p>
+  </form>
 
-          <div class="contact-box">
-            <div class="icon-box">
-              <i class="fa-solid fa-location-dot"></i>
-            </div>
+<script>
+  const contactForm = document.getElementById("contact-form");
+  const formStatus = document.getElementById("form-status");
 
-            <div>
-              <h3>Location</h3>
-              <p>Available for remote work worldwide</p>
-            </div>
-          </div>
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-          <div class="contact-box contact-box-column">
-            <h3 class="opportunity-title">Open for opportunities</h3>
-            <p class="opportunity-text">
-              Currently accepting new projects and collaborations. Let's build something great together.
-            </p>
-          </div>
-        </div>
+    const formData = new FormData(contactForm);
 
-        <!-- RIGHT -->
-        <div class="contact-right">
-          <form id="whatsappForm" class="contact-form" action="mailto:emdev448@gmail.com" method="post"
-            enctype="text/plain">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Your Name" required>
-              </div>
+    formData.append("_subject", "New message from your portfolio");
+    formData.append("_captcha", "true");
 
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Your Email" required>
-              </div>
-            </div>
+    formStatus.textContent = "Sending message...";
 
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" placeholder="Tell Me about your project..."></textarea>
-            </div>
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/emmanuelobinna62@gmail.com",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        }
+      );
 
-            <div class="form-btn">
-              <button type="submit">Send Message</button>
-            </div>
-          </form>
+      const result = await response.json();
+
+      if (result.success === "true" || result.success === true) {
+        formStatus.textContent = "Message sent successfully!";
+        contactForm.reset();
+      } else {
+        formStatus.textContent = "Message could not be sent. Please try again.";
+      }
+    } catch (error) {
+      formStatus.textContent = "Something went wrong. Please try again.";
+    }
+  });
+</script>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="footer">
-    <hr class="footer-line">
-
-    <div class="footer-container">
-      <a href="#">
-        <img src="images/frontend-end-html-javascript-tailwind-css-html-wjzfRVQO.png" class="footer-logo"
-          alt="company-logo">
-      </a>
-
-      <div>
-        <ul class="footer-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-socials">
-        <a href="https://github.com/emmanuelobinna62-dotcom" target="_blank" class="social-link">
-          <i class="fa-brands fa-github"></i>
-        </a>
-
-        <a href="https://www.facebook.com/EmDev?_rdc=4&_rdr#" target="_blank" class="social-link">
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-
-        <a href="mailto:emmanuelobinna62@gmail.com" class="social-link">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-
-        <a href="https://www.linkedin.com/in/emmanuel-okafor-8a26b625b/" target="_blank" class="social-link">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-      </div>
+  <footer>
+    <div class="wrap foot">
+      <a href="#home" class="logo">&lt;/<span>Em</span>Dev&gt;</a>
+      <nav aria-label="Footer">
+        <a href="#about">About</a><a href="#services">Services</a><a href="#resume">Resume</a><a
+          href="#projects">Projects</a>
+      </nav>
+      <p>&copy; 2026 Emmanuel Okafor</p>
     </div>
-
-    <hr class="footer-line">
-
-    <p class="footer-text">
-      © <span id="year"></span> EmDev. All rights reserved. Built with passion.
-    </p>
   </footer>
-
   <script src="script.js"></script>
 </body>
 
